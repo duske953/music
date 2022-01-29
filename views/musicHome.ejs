@@ -1,0 +1,139 @@
+<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <script defer src="script.js" charset="utf-8"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ken</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="hero-section">
+        <div class="hero-container container">
+          <%album.forEach((ele,i) => {%>
+          <%const releasedDate = ele.releasedDate.slice(0,10)%> <%let albumName = ele.albumName.slice(0,27)%>
+          <div class="hero-img-container">
+            <div class="content">
+              <h1 class="content-heading">Top Albums</h1>
+              <p class="content-summary">Get top albums,playlist right now anywhere <br> you are in the world from your favourite <br> artist</p>
+              <div class="album-more-info">
+                <div class="album-container">
+                  <span class="info-detail">Artist</span>
+                  <p class="info album-artist"><%=ele.artist%></p>
+                </div>
+                <div>
+                  <span class="info-detail">Album</span>
+                  <p class="info album-name"><%=albumName%></p>
+                </div>
+                <div>
+                  <span class="info-detail">Released date</span>
+                  <p class="info released-date"><%=releasedDate%></p>
+                </div>
+                <div>
+                  <span class="info-detail">No of tracks</span>
+                  <p class="info album-tracks"><%=ele.tracks%></p>
+                </div>
+
+              </div>
+            </div>
+            <div class="hero-img">
+              <%let img = ele.img[3].url.replace(ele.img[3].url.split("_").pop(), "600x600.jpg")%> <%img = img.replace(img.split("/")[4],"600x600")%>
+              <img src=<%=img%> alt=<%=ele.albumName%> />
+              <%if (ele.explicit){%>
+              <span class="explicit">Explicit</span> <%}%>
+        </div>
+      </div>
+      <%})%>
+            </div>
+      </section>
+
+
+      <section class="top-albums-section">
+        <div class="container top-album-container">
+          <h2 class="heading-secondary">Latest Albums</h2>
+          <p class="latest-description">Always stay up to date with the latest albums so that you never have to miss anything</p>
+          <%console.log(topAlbums)%>
+          <div class="latest-container">
+
+            <div class="latest-box">
+              <%topAlbums.slice(0,10).forEach(ele => {%>
+              <img src=<%=`https://api.napster.com/imageserver/v2/albums/${ele.id}/images/170x170.jpg`%> alt=<%=ele.albumName%>>
+              <div class="latest-info">
+                <p class="releaseDate">
+                  <span>
+                    <ion-icon name="calendar-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.releasedDate.slice(0,10)%>
+                  </span>
+                </p>
+                <p class="album-name">
+                  <span>
+                    <ion-icon name="albums-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.albumName.slice(0,10)%></span>
+                </p>
+                <p class="album-artist">
+                  <span>
+                    <ion-icon name="person-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.artist%><span>
+                </p>
+                <a href="/Album/<%=ele.id%>-albums">Check it out</a>
+              </div>
+              <%})%>
+            </div>
+
+
+            <div class="latest-box">
+              <%topAlbums.slice(10,20).forEach(ele => {%>
+              <img src=<%=`https://api.napster.com/imageserver/v2/albums/${ele.id}/images/170x170.jpg`%> alt=<%=ele.albumName%>>
+              <div class="latest-info">
+                <p class="releaseDate">
+                  <span>
+                    <ion-icon name="calendar-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.releasedDate.slice(0,10)%>
+                  </span>
+                </p>
+                <p class="album-name">
+                  <span>
+                    <ion-icon name="albums-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.albumName.slice(0,10)%></span>
+                </p>
+                <p class="album-artist">
+                  <span>
+                    <ion-icon name="person-outline"></ion-icon>
+                  </span>
+                  <span><%=ele.artist%><span>
+                </p>
+                <a href="/Album/<%=ele.id%>-albums">Check it out</a>
+              </div>
+              <%})%>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+
+</html>

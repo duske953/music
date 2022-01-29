@@ -1,0 +1,63 @@
+<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <title><%=query%></title>
+    <script defer src="script.js" charset="utf-8"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  </head>
+
+  <body>
+    <section class="search-section">
+      <%if (resultsAlbum.flat().length === 0 && resultArtist.flat().length === 0){%>
+      <div class="no-results">
+        <p class="no-search">We couldn't find any results for your query</p>
+      </div>
+      <%}%>
+      <div class="search-results">
+        <div class = "album-result">
+        <%if (resultsAlbum.flat().length !== 0){%>
+      <p class="heading album-heading">Albums</p>
+      <div class="results">
+        <%resultsAlbum.flat().slice(0,8).forEach((ele,i) => {%>
+        <div class="img-parent">
+          <a name="Album" href="/Album/<%=ele.id%>-albums"><img src=<%=`https://api.napster.com/imageserver/v2/albums/${ele.id}/images/356x237.jpg`%> onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d2hpdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+             alt=" <%=ele.name%>"></a>
+          <div class=" album-details">
+
+          </div>
+        </div>
+        <%})%>
+      </div>
+      </div>
+      <%}%>
+
+
+
+        <%if(resultArtist.flat().length !== 0){%>
+      <p class="heading artist-heading">Artist</p>
+      <div class="results result-artist">
+        <%resultArtist.flat().slice(0,6).forEach((ele,i) => {%>
+        <div class="img-artist-container">
+          <a href="/Artist/<%=ele.id%>-artists"><img class="img-artist" src=<%=`https://api.napster.com/imageserver/v2/artists/${ele.id}/images/356x237.jpg`%> alt="<%=ele.name%>"
+                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60';" alt=""></a>
+          <p class="no-img display-img"></p>
+        </div>
+        <%})%>
+      </div>
+      <%}%>
+      </div>
+    </section>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  </body>
+</html>

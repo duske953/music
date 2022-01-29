@@ -1,0 +1,113 @@
+/* more albums section */
+@media (max-width:62em) {
+  .latest-container {
+    gap: 4.4rem;
+    justify-content: space-around;
+  }
+
+  .latest-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading-secondary,
+  .latest-description {
+    text-align: center;
+  }
+
+  .latest-info {
+    align-items: center;
+  }
+
+  .latest-info a:link,
+  .latest-info a:visited {
+    align-self: center;
+  }
+
+  .results {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width:57em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .slick-initialized .slick-slide {
+    gap: 1.2rem;
+  }
+
+  .info {}
+}
+
+@media (max-width:50em) {
+  .slick-initialized .slick-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .latest-container {
+    gap: 1rem;
+  }
+
+  .top-album-container {
+    padding: 1.6rem 0
+  }
+
+  .album-more-info {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: -5.4rem;
+    gap: 1.8rem;
+  }
+
+  .hero-img {
+    text-align: center;
+  }
+
+  .hero-img img {
+    display: inline;
+    height: 70vh;
+  }
+
+  .title {
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+
+  .heart-icon {
+    height: 3.6rem;
+    width: 3.6rem;
+  }
+}
+
+@media (max-width:37em) {
+  html {
+    font-size: 50%;
+  }
+
+  .slick-initialized .slick-slide {
+    width: 100vw;
+  }
+
+  .content-summary {
+    font-size: 1.6rem;
+  }
+
+  .info {
+    overflow-x: hidden;
+    white-space: normal;
+  }
+
+  .album-more-info {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2.4rem;
+  }
+
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
