@@ -9,16 +9,20 @@ app.use( bodyParser.urlencoded( { extended: false } ) )
 app.use( express.static( "public" ) )
 
 
-
-app.get( "/", async function ( req, res ) {
+app.get( "/", async function ( _, res ) {
   try {
-    // getting the data from the "model"
+    // geteting the data from the "model"
     await fetchMusicData.getMusicData()
     res.render( "musicHome", { album: modelState.albumsDetails, topAlbums: modelState.albumTopDetails } )
   } catch ( err ) {
+    console.log(err.message)
     res.redirect( "back" )
   }
 } )
+
+
+
+
 
 
 app.get( "/search", async function ( req, res ) {
@@ -33,6 +37,8 @@ app.get( "/search", async function ( req, res ) {
     res.redirect( "back" )
   }
 } )
+
+
 
 
 app.get( [ "/Album/:Id", "/Artist/:Id" ], async function ( req, res ) {
@@ -53,6 +59,6 @@ app.get( [ "/Album/:Id", "/Artist/:Id" ], async function ( req, res ) {
 
 
 
-app.listen( process.env.PORT || 3000, () => {
+app.listen(  3000, () => {
   console.log( "server started" )
 } )

@@ -74,7 +74,7 @@ function resetTrack( e ) {
 };
 
 
-//once this function is called it the attribute on any element
+//once this function is called it sets the attribute on any element
 function checkClass( e, cla, type, attr ) {
   targetAudio = e.target.closest( "li" )
     .firstElementChild;
@@ -129,7 +129,7 @@ tracks.addEventListener( "click", function ( e ) {
 
 
 
-// function to get the objects from localStorage as soon as the screen loads
+  // function to get the objects from localStorage as soon as the screen loads
 function getLiked() {
   let data = JSON.parse( localStorage.getItem( "liked" ) )
   if ( !data ) return;

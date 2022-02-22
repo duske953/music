@@ -13,27 +13,27 @@
   ],
   "plugins": {
     "doc_comment": true,
-    "commonjs": {},
-    "requirejs": {
-      "baseURL": "",
-      "paths": "",
-      "override": ""
+    "complete_strings": {
+      "maxLength": 15
     },
-    "angular": {},
-    "es_modules": {},
-    "modules": {
-      "dontLoad": "",
-      "load": "",
-      "modules": ""
-    },
-    "node_resolve": {},
     "node": {
       "dontLoad": "",
       "load": "",
       "modules": ""
     },
-    "complete_strings": {
-      "maxLength": 15
-    }
+    "node_resolve": {},
+    "modules": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "es_modules": {},
+    "angular": {},
+    "requirejs": {
+      "baseURL": "",
+      "paths": "",
+      "override": ""
+    },
+    "commonjs": {}
   }
 }
