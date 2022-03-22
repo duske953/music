@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fetchMusicData = require("./model.js");
 const modelState = require("./modelState.js");
 const express = require("express");
