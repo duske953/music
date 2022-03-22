@@ -8,7 +8,6 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
-
 app.get("/", async function (_, res) {
   try {
     // geteting the data from the "model"
@@ -19,7 +18,7 @@ app.get("/", async function (_, res) {
     });
   } catch (err) {
     console.log(err.message);
-    res.redirect("back");
+    // res.redirect("back");
   }
 });
 
