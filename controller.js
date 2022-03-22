@@ -51,6 +51,11 @@ app.get(["/Album/:Id", "/Artist/:Id"], async function (req, res) {
   }
 });
 
+
+app.all("*",(req,res){
+  res.redirect("/")
+})
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("server started");
 });
