@@ -2,30 +2,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <script defer src="/script.js" charset="utf-8"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%=musicInfo[0].name%></title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/Home.css">
-  </head>
+<head>
+  <script defer src="/script.js" charset="utf-8"></script>
+  <meta name="description" content="Details of music, artists and albums">
+  <meta name="keywords" content="music, albums, songs, artist">
+  <meta name="author" content="eloho kennedy">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=musicInfo[0].name%></title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/Home.css">
+</head>
 
-  <body>
-    <main>
-      <section class="hero-info-img">
-        <%if(musicInfo[0].type === "album"){%>
-        <div class="info-container">
-          <img class="music-info-img" src=<%=`https://api.napster.com/imageserver/v2/albums/${musicInfo[0].id}/images/500x500.jpg`%> alt="<%=musicInfo[0].name%>">
-          <img class="absolute-img" src=<%=`https://api.napster.com/imageserver/v2/albums/${musicInfo[0].id}/images/300x300.jpg`%> alt="<%=musicInfo[0].name%>">
-        </div>
-        <%}else{%>
-        <div class="info-container">
-          <img class="music-info-img" src=<%=`https://api.napster.com/imageserver/v2/artists/${musicInfo[0].id}/images/500x500.jpg`%> alt="<%=musicInfo[0].name%>">
-          <img class="absolute-img" src=<%=`https://api.napster.com/imageserver/v2/artists/${musicInfo[0].id}/images/300x300.jpg`%> alt="<%=musicInfo[0].name%>">
-        </div>
-        <%}%>
+<body>
+  <main>
+    <section class="hero-info-img">
+      <%if(musicInfo[0].type === "album"){%>
+      <div class="info-container">
+        <img class="music-info-img"
+          src=<%=`https://api.napster.com/imageserver/v2/albums/${musicInfo[0].id}/images/500x500.jpg`%>
+          alt="<%=musicInfo[0].name%>">
+        <img class="absolute-img"
+          src=<%=`https://api.napster.com/imageserver/v2/albums/${musicInfo[0].id}/images/300x300.jpg`%>
+          alt="<%=musicInfo[0].name%>">
+      </div>
+      <%}else{%>
+      <div class="info-container">
+        <img class="music-info-img"
+          src=<%=`https://api.napster.com/imageserver/v2/artists/${musicInfo[0].id}/images/500x500.jpg`%>
+          alt="<%=musicInfo[0].name%>">
+        <img class="absolute-img"
+          src=<%=`https://api.napster.com/imageserver/v2/artists/${musicInfo[0].id}/images/300x300.jpg`%>
+          alt="<%=musicInfo[0].name%>">
+      </div>
+      <%}%>
 </section>
 
 <section class="album-tracks-sec">
@@ -33,22 +44,23 @@
     <h1 class = "tracks-heading">Top Tracks</h1>
 <ul class = "tracks">
 <%musicInfoDet.forEach((ele,i) => {%>
-        <li class="list-item-track">
-          <audio class="player" src=<%=ele.url%>></audio>
-          <img class="icon play-outline" src="/img/play-button-arrowhead.png" alt="play-pause btn">
-          <p class="title"><%=ele.trackName%></p>
-          <ion-icon id=<%=ele.id%> class="heart-icon outline" name="heart-outline" data-id=<%=i%>></ion-icon>
-        </li>
-        <%})%>
-        </ul>
-        </div>
-      </section>
-    </main>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+      <li class="list-item-track">
+        <audio class="player" src=<%=ele.url%>></audio>
+        <img class="icon play-outline" src="/img/play-button-arrowhead.png" alt="play-pause btn">
+        <p class="title"><%=ele.trackName%></p>
+        <ion-icon id=<%=ele.id%> class="heart-icon outline" name="heart-outline" data-id=<%=i%>></ion-icon>
+      </li>
+      <%})%>
+      </ul>
+      </div>
+    </section>
+  </main>
+  <%- include("partials/footer") %>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
 
 </html>
