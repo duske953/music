@@ -5,20 +5,19 @@ const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const app = express();
+const url = require("url");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
-app.get("/", async function (_, res) {
+app.get("/", async function (req, res) {
   try {
-    // geteting the data from the "model"
     await fetchMusicData.getMusicData();
     res.render("musicHome", {
       album: modelState.albumsDetails,
       topAlbums: modelState.albumTopDetails,
     });
   } catch (err) {
-    console.log(err.message);
-    // res.redirect("back");
+    return res.redirect("/");
   }
 });
 
@@ -31,7 +30,7 @@ app.get("/search", async function (req, res) {
       resultArtist: modelState.searchResults[0].artists,
     });
   } catch (err) {
-    res.redirect("back");
+    return res.redirect("/");
   }
 });
 
@@ -47,12 +46,12 @@ app.get(["/Album/:Id", "/Artist/:Id"], async function (req, res) {
       musicInfoDet: modelState.musicInfoDet,
     });
   } catch (err) {
-    res.redirect("back");
+    return res.redirect("/");
   }
 });
 
 app.all("*", (req, res) => {
-  res.redirect("/");
+  return res.redirect("/");
 });
 
 app.listen(process.env.PORT || 3000, () => {

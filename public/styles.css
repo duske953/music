@@ -354,5 +354,13 @@ form {
 .footer-content a:link,
 .footer-content a:visited {
   text-decoration: none;
-  color: #3bc9db
+  color: #3bc9db;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.footer-main:link,
+.footer-main:visited {
+  text-decoration: none;
+  color: #333;
 }
